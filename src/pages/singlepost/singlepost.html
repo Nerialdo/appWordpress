@@ -1,0 +1,85 @@
+<!--
+  Generated template for the SinglepostPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>singlepost</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+ <div *ngIf="selectedItem" class="selection">
+    <img [src]="selectedItem.featured_image_urls.medium">
+    <h2 [innerHTML]="selectedItem.title.rendered"></h2>
+    <div [innerHTML]="selectedItem.content.rendered"></div>
+
+    <div class="comente">
+      Comente 
+      <!--<form #form="ngForm" (ngSubmit)="login()" novalidate>
+        <ion-item>
+          <ion-label>User</ion-label>
+          <ion-input type="text" name="name" required [(ngModel)]="name" ngControl="name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Age</ion-label>
+          <ion-textarea  name="age" [(ngModel)]="age" ngControl="age"></ion-textarea>
+        </ion-item>
+        <button ion-button type="submit" block>Add User</button>
+      </form>-->
+ 
+      <form #form="ngForm" (ngSubmit)="comentar()" novalidate>
+        <ion-list>
+          <ion-item>
+            <ion-label color="primary" stacked>Nome</ion-label>
+            <ion-input type="text" name="name" required [(ngModel)]="name" ngControl="name" placeholder="Digite seu nome"></ion-input>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label color="primary" stacked>E-mail</ion-label>
+            <ion-input type="email" name="email" required [(ngModel)]="email" ngControl="email" placeholder="Digite seu E-mail" ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label color="primary" stacked>Mensagem</ion-label>
+            <ion-textarea  name="age" [(ngModel)]="age" required ngControl="age" placeholder="Digite seu comentário"></ion-textarea>
+          </ion-item>
+          
+          
+          
+    
+        </ion-list>
+    
+        <button ion-button full color="primary" [disabled]="!form.form.valid" type="submit" >
+          Comentar
+        </button>
+      </form>
+    </div>
+    <div class="alertaerro">
+        <p ion-text color="danger">{{mesangeerro}}</p>
+    </div>
+    <div class="comentarios">
+      <div class="nomecome" ><ion-icon name="chatbubbles"></ion-icon> Comentários</div>
+      <ion-list *ngFor="let itemcoment of coment">
+        <ion-item>
+          <ion-avatar item-start>
+            <!--<img [src]="//icons.iconarchive.com/icons/franksouza183/fs/128/Status-user-invisible-icon.png">-->
+            <ion-buttons start="" class="bar-buttons bar-buttons-ios">
+                <button icon-only="" ion-button="" solid="" class="disable-hover bar-button bar-button-ios bar-button-solid bar-button-solid-ios"><span class="button-inner">
+                  <ion-icon name="contact" role="img" class="icon icon-ios ion-ios-contact" aria-label="contact"></ion-icon>
+                </span><div class="button-effect"></div></button>
+              </ion-buttons>
+          </ion-avatar>
+          <h2 [innerHTML]="itemcoment.author_name"></h2>
+          <p [innerHTML]="itemcoment.content.rendered"></p>
+          <p>{{ itemcoment.date }}</p>
+        </ion-item>
+      </ion-list>
+    </div>
+ </div>
+</ion-content>

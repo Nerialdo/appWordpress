@@ -1,0 +1,8 @@
+{
+  "name": "appWordpress",
+  "app_id": "ca909bc2",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

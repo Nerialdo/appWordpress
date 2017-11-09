@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-navbar>
+    <ion-row>
+        <ion-col col-4>
+          <div>
+            <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+            </button>
+          </div>
+        </ion-col>
+        <ion-col col-4>
+          <div style="margin: 0 auto;">
+            <ion-title>Home</ion-title>
+          </div>
+        </ion-col>
+        <ion-col col-4>
+          <div>
+              <ion-icon (click)="abrirPesquisar()" class="botaopesquisar" style=" float: right; font-size: 28px; margin-top:3px" name="search"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="home">
+    <ion-grid>
+        <ion-row>
+          <ion-col col-12>
+              <ion-card *ngFor="let itemi of itemsi" (click)="itemTapped($event, itemi)">
+                  {{itemi.title.rendered}}
+
+              </ion-card>
+
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6>This column will take 6 columns</ion-col>
+          <ion-col col-6>This column will take 6 columns</ion-col>
+        </ion-row>
+      </ion-grid>
+  <ion-card *ngFor="let item of items" (click)="itemTapped($event, item)">
+      <img [src]="item.featured_image_urls.medium">
+      <ion-card-content>
+        <h2 [innerHTML]="item.title.rendered"></h2>
+        {{item.acf.chapel}}
+      </ion-card-content>
+    
+      <img src="img/advance-card-bttf.png">
+    
+      <ion-card-content>
+          <p [innerHTML]="item.excerpt.rendered"></p>
+      </ion-card-content>
+    
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>12 Likes</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="text"></ion-icon>
+            <div>4 Comments</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <ion-note>
+            11h ago
+          </ion-note>
+        </ion-col>
+      </ion-row>
+    
+    </ion-card>
+    <ion-list>
+      <ion-item *ngFor="let itempaginacao of itemspaginacao" (click)="itemTapped($event, itempaginacao)">Titulo = {{ itempaginacao.title.rendered }}</ion-item>
+    </ion-list>
+    <!--<ion-list>
+      <ion-item *ngFor="let i of itemspg">{{i}}</ion-item>
+    </ion-list>-->
+    <!-- paginação -->
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    
+    <!--<button (click)="chamaProd(item)">Enviar</button>-->
+    <ion-list>
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="img/thumbnail-totoro.png">
+          </ion-thumbnail>
+          <h2>My Neighbor Totoro</h2>
+          <p>Hayao Miyazaki • 1988</p>
+          <button ion-button clear item-end>View</button>
+        </ion-item>
+      </ion-list>
+</ion-content>
+
